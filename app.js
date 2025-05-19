@@ -26,7 +26,7 @@ const viewSchema = new mongoose.Schema({
     count: Number
 })
 
-const View = mongoose.model("View",viewSchema)
+const Views = mongoose.model("Views",viewSchema)
 
 const app = express();
 app.use(cors())
