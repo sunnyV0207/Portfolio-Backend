@@ -35,7 +35,7 @@ app.get("/", (req,res)=>{
 })
 
 app.get("/init", async(req,res)=>{
-    const existing = await View.findOne({_id: '682ada2a17be9b2573a2704e'});
+    const existing = await View.findOne();
     if(!existing){
         await View.create({count: 0})
     }
@@ -43,12 +43,12 @@ app.get("/init", async(req,res)=>{
 })
 
 app.get("/views", async(req,res)=>{
-    const view = await View.findOne({_id: '682ada2a17be9b2573a2704e'});
+    const view = await View.findOne();
     res.json({count: view.count})
 })
 
 app.post("/views/increment", async(req,res)=>{
-    const view = await View.findOne({_id: '682ada2a17be9b2573a2704e'});
+    const view = await View.findOne();
     view.count += 1
     await view.save()
     res.json({count: view.count})
