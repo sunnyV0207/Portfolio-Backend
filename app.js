@@ -38,7 +38,7 @@ app.get("/", (req,res)=>{
 app.get("/init", async(req,res)=>{
     const existing = await Views.findOne();
     if(!existing){
-        await View.create({count: 0})
+        await Views.create({count: 0})
     }
     res.send("Initialised")
 })
