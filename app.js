@@ -42,7 +42,7 @@ app.get("/init", async(req,res)=>{
     res.send("Initialised")
 })
 
-app.get("views", async(req,res)=>{
+app.get("/views", async(req,res)=>{
     const view = await View.findOne();
     res.json({count: view.count})
 })
