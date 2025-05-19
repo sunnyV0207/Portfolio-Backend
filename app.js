@@ -14,7 +14,7 @@ main()
 })
 
 async function main(){
-    await mongoose.connect('mongodb+srv://sunnyverma:Loveforsharmas123@portfolio.u8ktxcj.mongodb.net/Portfolio')
+    await mongoose.connect(process.env.MONGO_URI)
 }
 
 const viewSchema = new mongoose.Schema({
@@ -25,6 +25,10 @@ const View = mongoose.model("View",viewSchema)
 
 const app = express();
 app.use(cors())
+
+app.get("/", (req,res)=>{
+    res.send("Server is alive");
+})
 
 app.get("/init", async(req,res)=>{
     const existing = await View.findOne();
