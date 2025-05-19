@@ -14,6 +14,7 @@ main()
 })
 
 async function main(){
+    mongoose.set('bufferCommands', false)
     await mongoose.connect(process.env.MONGO_URI,{
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -44,11 +45,13 @@ app.get("/init", async(req,res)=>{
 
 app.get("/views", async(req,res)=>{
     const view = await View.findOne();
+    console.log(view)
     res.json({count: view.count})
 })
 
 app.post("/views/increment", async(req,res)=>{
     const view = await View.findOne();
+    console.log(view)
     view.count += 1
     await view.save()
     res.json({count: view.count})
